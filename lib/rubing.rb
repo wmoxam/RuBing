@@ -141,6 +141,8 @@ module RuBing
   end
 
   class Result
+    REQUIRED_ATTRIBUTES = %w{title description url}
+
     def initialize(result_hash)
       @data = result_hash
       result_hash.each_pair do |key, value|
@@ -154,6 +156,12 @@ module RuBing
         rescue Exception => e
           puts "Bad Key: '#{key}' #{e.message}"
           puts result_hash.inspect
+        end
+
+        # So in some unknown situations Bing does not return some attributes!
+        def method_missing(method_name, *args, &block)
+          return "" if REQUIRED_ATTRIBUTES.include?(method_name)
+          raise NoMethodError
         end
       end
     end

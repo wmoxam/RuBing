@@ -18,6 +18,8 @@ class SearchTest < Test::Unit::TestCase
 
   def test_result_structure
     response = RuBing::Search.get('Ruby')
-    assert response.results.first.methods.include?('url')
+    RuBing::Result::REQUIRED_ATTRIBUTES.each do |attrib|
+      assert response.results.first.respond_to?(attrib.to_sym), "Missing required attribute #{attrib}.}"
+    end
   end
 end
