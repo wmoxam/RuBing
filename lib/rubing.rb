@@ -157,13 +157,13 @@ module RuBing
           puts "Bad Key: '#{key}' #{e.message}"
           puts result_hash.inspect
         end
-
-        # So in some unknown situations Bing does not return some attributes!
-        def method_missing(method_name, *args, &block)
-          return "" if REQUIRED_ATTRIBUTES.include?(method_name)
-          raise NoMethodError
-        end
       end
+    end
+
+    # So in some unknown situations Bing does not return some attributes!
+    def method_missing(method_name, *args, &block)
+      return "" if REQUIRED_ATTRIBUTES.include?(method_name.to_s)
+      raise NoMethodError
     end
 
     def data
