@@ -9,5 +9,5 @@ Gem::Specification.new do |spec|
   spec.files = Dir['lib/*.rb'] + Dir['test/*.rb']
   spec.homepage = 'http://github.com/wmoxam/RuBing'
   spec.required_ruby_version = '>= 1.8.6'
-  spec.version = '0.1.2'
+  spec.version = '0.1.3'
 end
