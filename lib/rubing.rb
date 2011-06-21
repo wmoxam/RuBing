@@ -128,11 +128,11 @@ module RuBing
     end
 
     def get_total_results
-      parsed_json["SearchResponse"]["Web"]["Total"] rescue 0
+      parsed_json["SearchResponse"]["Web"]["Total"].to_i rescue 0
     end
 
     def get_offset
-      parsed_json["SearchResponse"]["Web"]["Offset"] rescue 0
+      parsed_json["SearchResponse"]["Web"]["Offset"].to_i rescue 0
     end
 
     def parsed_json
